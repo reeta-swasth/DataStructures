@@ -12,7 +12,6 @@ class Node23:
 
     def display23Tree(self):
         # Sorted display of node values
-        print "Printing Node Values:"
         print self.key1
         if self.leftnode23 <> None:
             self.leftnode23.display23Tree()
