@@ -7,6 +7,7 @@ class Node23:
     leftnode23 = None
     rightnode23 = None
     middlenode23 = None
+    parentnode23= None
 
 
 # Display all the values in 2-3 Tree
@@ -27,7 +28,7 @@ class Node23:
             self.rightnode23.display23Tree()
 
 # Insert new value into 2-3 Tree
-    def insert(self, value):
+    def insert23(self, value):
         if self.key1 ==None:
             self.key1 = value
         elif self.key2 == None and value > self.key1:
@@ -35,16 +36,31 @@ class Node23:
         elif self.key2 == None and value <= self.key1:
             self.key2 = self.key1
             self.key1 = value
-        elif self.leftnode23 == None:
-            self.split_node(value)
-        elif  value < self.key1:
-            self.leftnode23.insert(value)
-        elif  value > self.key1 and value < self.key2:
-            self.middlenode23.insert(value)
-        elif  value > self.key2:
-            self.rightnode23.insert(value)
+        else:
+           new_node = self.find_node(value)
+           self.split_node(new_node)
 
-    def split_node(self, new_value):
+
+
+    def find_node(self,value):
+        if self.key1 <> None and self.key2 <> None:
+            if value < self.key1 and self.leftnode23 <> None:
+                self.leftnode23.find_node(value)
+            if value > self.key2 and self.rightnode23 <> None:
+                self.rightnode23.find_node(value)
+            if value < self.key2 and self.middlenode23 <> None and value > self.key1:
+                self.middlenode23.find_node(value)
+        else:
+           return self
+
+
+    def split_node(self,value):
+        if self.parentnode23 == None:
+            if self.leftnode23 == None:
+
+
+
+
 
 
 
@@ -55,7 +71,7 @@ class Tree23:
         self.node23.display23Tree()
 
     def insertValue(self, value):
-        self.node23.insert(value)
+        self.node23.insert23(value)
 
 
 
